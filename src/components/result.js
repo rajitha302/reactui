@@ -1,6 +1,6 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Card } from "react-bootstrap";
 
 const Result = (props) => {
     return (
