@@ -1,0 +1,25 @@
+@mixin btnstates {
+  &:hover {
+    transition-duration: 0.4s;
+    transition-property: background-color !important;
+    background-color: $primary-color_dark !important;
+  }
+
+  &:focus {
+    background-color: $primary-color_dark !important;
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: $primary-color_dark !important;
+  }
+}
+
+.custom-btn {
+  background-color: $primary-color !important;
+  border-radius: 0%;
+  border: none;
+  width: 100%;
+
+  @include btnstates();
+}

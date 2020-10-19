@@ -1,0 +1,11 @@
+@import "./variables";
+@import "./pages/login";
+@import "./components/btn";
+@import "./components/distcal";
+@import "./components/banner";
+@import "./components/navigation";
+@import "./pages/timezone";
+
+body {
+    background-color: rgb(247, 247, 247) !important;
+}
