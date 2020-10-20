@@ -16,6 +16,7 @@ const Navigation = () => {
                                 <NavDropdown.Item><Link to="/mainpage" ClassName="active">Distance </Link></NavDropdown.Item>
                                 <NavDropdown.Item><Link to="/timezone">Time Zone</Link></NavDropdown.Item>
                                 <NavDropdown.Item><Link to="/closestcountry">Closest Country</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/keyword">Keyword Finder</Link></NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                         <Link to="/"><Button variant="outline-dark" size="sm">Logout</Button></Link>

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Mainpage from './pages/mainpage';
 import Timezone from './pages/timezone';
 import Closestcountry from './pages/closestcountry';
+import Keyword from './pages/keyword';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/mainpage" component={Mainpage} />
           <Route exact path="/timezone" component={Timezone} />
           <Route exact path="/closestcountry" component={Closestcountry} />
+          <Route exact path="/keyword" component={Keyword} />
         </Switch>
       </Router>
     </div>
