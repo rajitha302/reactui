@@ -4,17 +4,20 @@ import { Link } from "react-router-dom";
 import { Container, Col, Row, Form } from "react-bootstrap";
 import Btn from "../components/btn";
 import "../assets/style.scss"
+import Logo from "../assets/images/logo.png"
 
 const Login = () => {
     return (
         <div className="login">
             <Container>
                 <Row className="d-flex justify-content-center">
+
                     <Col className="col-md-6 login__card">
+                        <Col className="text-center"><img src={Logo} alt="" /></Col>
                         <Form>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" />
+                                <Form.Control type="email" placeholder="Enter your email" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicPassword">
@@ -28,6 +31,7 @@ const Login = () => {
                                 <Btn name="Login" />
                             </Link>
                         </Form>
+                        <p className="mt-4 text-center">Need an account? <a href="google">Register</a></p>
                     </Col>
                 </Row>
             </Container>

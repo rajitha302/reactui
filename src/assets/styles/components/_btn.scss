@@ -17,9 +17,10 @@
 
 .custom-btn {
   background-color: $primary-color !important;
-  border-radius: 0%;
-  border: none;
+  border-radius: 0;
+  border: none !important;
   width: 100%;
+  color: $secondary-color !important;
 
   @include btnstates();
 }

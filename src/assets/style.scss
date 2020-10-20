@@ -1,10 +1,11 @@
 @import "./variables";
-@import "./pages/login";
-@import "./components/btn";
-@import "./components/distcal";
-@import "./components/banner";
-@import "./components/navigation";
-@import "./pages/timezone";
+@import "./styles/pages/login";
+@import "./styles/components/btn";
+@import "./styles/components/distcal";
+@import "./styles/components/banner";
+@import "./styles/components/navigation";
+@import "./styles/components/timezone";
+@import "./styles/components/closestcfinder";
 
 body {
     background-color: rgb(247, 247, 247) !important;
