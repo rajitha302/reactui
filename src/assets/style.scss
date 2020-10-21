@@ -7,6 +7,10 @@
 @import "./styles/components/timezone";
 @import "./styles/components/closestcfinder";
 
+.App {
+    height: 100vh;
+}
+
 body {
     background-color: rgb(247, 247, 247) !important;
 }

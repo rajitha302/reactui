@@ -9,10 +9,9 @@ import Logo from "../assets/images/logo.png"
 const Login = () => {
     return (
         <div className="login">
-            <Container>
-                <Row className="d-flex justify-content-center">
-
-                    <Col className="col-md-6 login__card">
+            <Container className="h-100">
+                <Row className="justify-content-center h-100">
+                    <Col className="col-md-6 login__card my-auto">
                         <Col className="text-center"><img src={Logo} alt="" /></Col>
                         <Form>
                             <Form.Group controlId="formBasicEmail">
