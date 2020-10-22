@@ -7,25 +7,25 @@ import * as AiIcons from "react-icons/ai";
 export const Navdata = [
     {
         title: 'Distance Cal',
-        path: '/',
+        path: '/mainpage',
         icon: <AiIcons.AiOutlineColumnWidth />,
         cName: 'nav-text'
     },
     {
         title: 'Time Zone Cal',
-        path: '/',
+        path: '/timezone',
         icon: <AiIcons.AiOutlineClockCircle />,
         cName: 'nav-text'
     },
     {
         title: 'Closest Country',
-        path: '/',
+        path: '/closestcountry',
         icon: <AiIcons.AiOutlineGlobal />,
         cName: 'nav-text'
     },
     {
         title: 'Keyword Finder',
-        path: '/',
+        path: '/keyword',
         icon: <AiIcons.AiOutlineFileWord />,
         cName: 'nav-text'
     },
