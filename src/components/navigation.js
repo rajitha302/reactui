@@ -1,29 +1,47 @@
-import React from 'react'
-import { Navbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
+import React, { useState } from 'react'
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo.png"
+// import Logo from "../assets/images/logo.png"
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import { Navdata } from './navdata'
+import { IconContext } from 'react-icons'
 
-const Navigation = () => {
+function Navigation() {
+    const [sidebar, setSidebar] = useState(false)
+
+    const showSidebar = () => setSidebar(!sidebar)
     return (
-        <div className="navigation">
-            <Navbar bg="light" expand="lg" fixed="top">
-                <Container>
-                    <Navbar.Brand href="#home"><img className="logo" src={Logo} alt="" /></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ml-auto">
-                            <NavDropdown title="Projects" id="basic-nav-dropdown">
-                                <NavDropdown.Item><Link to="/mainpage" ClassName="active">Distance </Link></NavDropdown.Item>
-                                <NavDropdown.Item><Link to="/timezone">Time Zone</Link></NavDropdown.Item>
-                                <NavDropdown.Item><Link to="/closestcountry">Closest Country</Link></NavDropdown.Item>
-                                <NavDropdown.Item><Link to="/keyword">Keyword Finder</Link></NavDropdown.Item>
-                            </NavDropdown>
-                        </Nav>
-                        <Link to="/"><Button variant="outline-dark" size="sm">Logout</Button></Link>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        </div>
+        <>
+            <IconContext.Provider value={{ color: '#fff' }}>
+                <div className="navibar">
+                    <Link to="#" className="menu-bars">
+                        <FaIcons.FaBars onClick={showSidebar} />
+                    </Link>
+                </div>
+                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                    <ul className="nav-menu-items" onClick={showSidebar}>
+                        <li className="navbar-toggle">
+                            <Link to="#" className="menu-bars">
+                                <AiIcons.AiOutlineClose />
+                            </Link>
+                        </li>
+                        <div className="pt-5">
+                            {Navdata.map((item, index) => {
+                                return (
+                                    <li key={index} className={item.cName}>
+                                        <Link to={item.path}>
+                                            {item.icon}
+                                            <span>{item.title}</span>
+                                        </Link>
+                                    </li>
+                                )
+                            })}
+                        </div>
+
+                    </ul>
+                </nav>
+            </IconContext.Provider>
+        </>
     )
 }
 

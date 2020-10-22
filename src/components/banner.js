@@ -6,7 +6,7 @@ const Banner = (props) => {
     return (
         <div className="banner">
             <Jumbotron fluid>
-                <Container className="banner--padding text-center pt-5">
+                <Container className="banner--padding text-center">
                     <h1 className="py-3">{props.heading}</h1>
                     <p>
                         {props.subheading}
