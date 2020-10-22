@@ -68,6 +68,12 @@
     bottom: 10px;
 }
 
+@media (max-width: 768px) {
+.bottom {
+    bottom: 20px;
+}
+}
+
 .nav-menu-items {
     width: 100%;
 }
