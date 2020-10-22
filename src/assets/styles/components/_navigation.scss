@@ -54,8 +54,16 @@
 }
 
 .nav-text a:hover {
+    transition: ease-in-out;
+    transition-property: background-color;
+    transition-duration: 100ms;
+    text-decoration: none;
     color: $secondary-color;
     background-color: rgb(144, 47, 255);
+}
+
+.bottom {
+    padding-top: 50vh;
 }
 
 .nav-menu-items {

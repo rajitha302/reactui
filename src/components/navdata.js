@@ -29,4 +29,10 @@ export const Navdata = [
         icon: <AiIcons.AiOutlineFileWord />,
         cName: 'nav-text'
     },
+    {
+        title: 'Logout',
+        path: '/',
+        icon: <AiIcons.AiOutlineLogout />,
+        cName: 'nav-text bottom'
+    },
 ]
