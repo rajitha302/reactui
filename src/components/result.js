@@ -9,7 +9,9 @@ const Result = (props) => {
                 <Col className="col-md-4">
                     <Card>
                         <Card.Body>
-                            <h2>{props.name}</h2>
+                            <h2>{props.lat1} |{props.lng1}</h2>
+                            <hr />
+                            <h2>{props.lat2} |{props.lng2}</h2>
                         </Card.Body>
                     </Card>
                 </Col>
