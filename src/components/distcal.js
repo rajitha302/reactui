@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 
-const Distcal = () => {
+const Distcal = (props) => {
     return (
         <div className="distcal">
             <Container>
@@ -9,14 +9,14 @@ const Distcal = () => {
                     <Row>
                         <Col>
                             <Form.Label>From</Form.Label>
-                            <Form.Control placeholder="From ex: Sri Lanka" />
+                            <Form.Control placeholder="From ex: Sri Lanka" onChange={props.changed} />
                         </Col>
                         <Col>
                             <Form.Label>To</Form.Label>
                             <Form.Control placeholder="To" />
                         </Col>
                     </Row>
-                    <Col className="text-center mt-3"><Button variant="primary" size="md" className="px-4 distcal__btn">Find Distance</Button></Col>
+                    <Col className="text-center mt-3"><Button variant="primary" size="md" className="px-4 distcal__btn" onClick={props.search}>Find Distance</Button></Col>
                 </Form>
             </Container>
         </div>
