@@ -13,9 +13,7 @@ const Result = (props) => {
                         </Card.Body>
                     </Card>
                 </Col>
-
             </Container>
-
         </div>
     )
 }
