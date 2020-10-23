@@ -42,31 +42,45 @@ class Mainpage extends Component {
             .then(axios.spread((firstResponse, secondResponse) => {
 
                 const latlng1 = firstResponse.data[0].latlng;
+                const latlng2 = secondResponse.data[0].latlng;
 
                 const lat1 = latlng1[0]
                 const lng1 = latlng1[1]
-
-                this.setState({ lat1, lng1 });
-
-                const latlng2 = secondResponse.data[0].latlng;
-
                 const lat2 = latlng2[0]
                 const lng2 = latlng2[1]
-
-                this.setState({ lat2, lng2 });
-
+                const unit = "K"
 
 
+                if ((lat1 === lat2) && (lng1 === lng2)) {
+                    return 0;
+                }
+                else {
+                    var radlat1 = Math.PI * lat1 / 180;
+                    var radlat2 = Math.PI * lat2 / 180;
+                    var theta = lng1 - lng2;
+                    var radtheta = Math.PI * theta / 180;
+                    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                    if (dist > 1) {
+                        dist = 1;
+                    }
+                    dist = Math.acos(dist);
+                    dist = dist * 180 / Math.PI;
+                    dist = dist * 60 * 1.1515;
+                    if (unit === "K") { dist = dist * 1.609344 }
+                    if (unit === "N") { dist = dist * 0.8684 }
+                    // return dist;
+                    dist = dist + " Km"
+                    console.log(dist)
+                }
+
+                this.setState({ dist })
+                // this.setState({ lat1, lng1 });
+                // this.setState({ lat2, lng2 });
 
 
-
-                
-
-                console.log(firstResponse.data, secondResponse.data);
+                // console.log(firstResponse.data, secondResponse.data);
             }))
             .catch(error => console.log(error));
-
-
 
 
 
@@ -84,13 +98,15 @@ class Mainpage extends Component {
         //     });
     }
 
+
+
     render() {
         return (
             <div>
                 <Navigation />
                 <Banner heading="Distance Calculator" subheading="Simple Distance Calculator App to find distance between two Countries" />
                 <DistFinder search={this.fetchData} Fonechanged={this.handlefirstInput} Ftwochanged={this.handlesecondInput} />
-                <Result lat1={this.state.lat1} lng1={this.state.lng1} lat2={this.state.lat2} lng2={this.state.lng2} />
+                <Result distance={this.state.dist} />
             </div>
         )
     }
