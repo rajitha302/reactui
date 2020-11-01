@@ -1,5 +1,5 @@
 const initialState = {
-    distance: '0'
+    distance: 0
 }
 
 const distanceReducer = (state = initialState, action) => {

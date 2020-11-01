@@ -5,7 +5,7 @@ import distancefunc from '../../functions/distancefunc'
 
 
 function* getDistance(action) {
-
+console.log(action)
     console.log('hello from saga')
     try {
     const data = yield call(fetchApi);

@@ -21,6 +21,6 @@ export default function distancefunc(lat1, lon1, lat2, lon2, unit) {
       if (unit === "N") {
         dist = dist * 0.8684;
       }
-      return dist + " Km";
+      return dist;
     }
   }
