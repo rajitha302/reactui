@@ -1,12 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {requestDistance} from '../redux/actions'
+import {UserContext} from '../UserContext'
 import {
-    Redirect,
     Link
   } from "react-router-dom";
 
-const Distance = () => {
+const Distance = (props) => {
+    const{login, setlogin} = useContext(UserContext)
     const distance = useSelector((state) => state.distance.distance)
     const dispatch = useDispatch();
 
@@ -35,6 +36,13 @@ const Distance = () => {
 // console.log(onchangestate.to)
         dispatch(requestDistance(onchangestate));
     };
+
+    const logoutHandler =() => {
+setlogin(false)
+if(login === false){
+    props.history.push("/");
+}
+    }
     
     return (
         <div>
@@ -43,6 +51,7 @@ const Distance = () => {
             <button onClick={() => getdistancehandler()}>Search</button>
             <p>Result: {distance}</p>
             <Link to="/character">c</Link>
+            <button onClick={() => logoutHandler()}>logout</button>
         </div>
     )
 }

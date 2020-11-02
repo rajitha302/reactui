@@ -7,6 +7,7 @@ import TimezoneRange from './Components/TimezoneRange';
 import Characters from './Components/Characters';
 import Login from './Components/Login';
 import { UserContext } from './UserContext';
+import {ProtectedRoute} from './ProtectedRoute'
 
 function App() {
 
@@ -23,11 +24,12 @@ function App() {
           <Switch>
           {/* <UserContext.Provider value={{login, setlogin}, {uname, setUname}, {password, setPassword}, {loginattempts, setloginAttempts}}> */}
           <UserContext.Provider value={{login, setlogin}}>
+            
           <Route exact path="/" component={Login} />
-          <Route exact path="/distance" component={Distance} />
-          <Route exact path="/closest" component={ClosestCountry} />
-          <Route exact path="/timezone" component={TimezoneRange} />
-          <Route exact path="/character" component={Characters} />
+          <ProtectedRoute exact path="/distance" component={Distance} />
+          <ProtectedRoute exact path="/closest" component={ClosestCountry} />
+          <ProtectedRoute exact path="/timezone" component={TimezoneRange} />
+          <ProtectedRoute exact path="/character" component={Characters} />
 
           </UserContext.Provider>
           </Switch>
