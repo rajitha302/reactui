@@ -4,14 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
 import {createStore, applyMiddleware} from 'redux'
 import allReducers from './redux/reducers'
 import {Provider} from 'react-redux'
 
 //import dev tools extension
 import { composeWithDevTools } from "redux-devtools-extension";
-
 
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './redux/sagas/index'
