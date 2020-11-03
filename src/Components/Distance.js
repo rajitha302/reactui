@@ -1,59 +1,84 @@
-import React, {useContext} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import {requestDistance} from '../redux/actions'
-import {UserContext} from '../UserContext'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { requestDistance } from "../redux/actions";
+
+// Material-UI
 import {
-    Link
-  } from "react-router-dom";
+  TextField,
+  Paper,
+  Grid,
+  Box,
+  Typography,
+  Divider,
+} from "@material-ui/core";
+import Btn from "./common/Btn";
+import PersistentDrawerLeft from "./common/Nav";
 
 const Distance = (props) => {
-    const{login, setlogin} = useContext(UserContext)
-    const distance = useSelector((state) => state.distance.distance)
-    const dispatch = useDispatch();
+  const distance = useSelector((state) => state.distance.distance);
+  const dispatch = useDispatch();
 
-    // const [from, setFrom] = useState('');
-    // const [to, setTo] = useState('');
+  // const [from, setFrom] = useState('');
+  // const [to, setTo] = useState('');
 
-    let data = {
-        from: '',
-        to: ''
-    }
+  let data = {
+    from: "",
+    to: "",
+  };
 
-    const handleFrom = (fromEvent) => {
-        data.from = fromEvent
+  const handleFrom = (fromEvent) => {
+    console.log(fromEvent);
+    data.from = fromEvent;
+  };
+
+  const handleTo = (toEvent) => {
+    data.to = toEvent;
+  };
+
+  const getdistancehandler = () => {
+    const onchangestate = {
+      from: data.from,
+      to: data.to,
     };
+    dispatch(requestDistance(onchangestate));
+  };
 
-    const handleTo = (toEvent) => {
-        data.to = toEvent
-    };
+  return (
+    <div>
+      <PersistentDrawerLeft />
+      <Typography variant='h4'>Distance Finder</Typography>
+      <Divider />
+      <Grid container direction='row' justify='center' alignItems='center'>
+        <Grid item xs={3}>
+          <Paper m={1}>
+            <Box>
+              <TextField
+                required
+                label='From'
+                onChange={(event) => handleFrom(event.target.value)}
+              />
+            </Box>
 
-    const getdistancehandler = () => {
-        const onchangestate = {
-            from: data.from,
-            to: data.to
-        };
-// console.log(onchangestate.from)
-// console.log(onchangestate.to)
-        dispatch(requestDistance(onchangestate));
-    };
+            <Box>
+              <TextField
+                required
+                label='To'
+                onChange={(event) => handleTo(event.target.value)}
+              />
+            </Box>
+            <Btn
+              variant='contained'
+              color='primary'
+              onClick={getdistancehandler}
+            >
+              Search
+            </Btn>
+            <Typography paragraph>Result: {distance}</Typography>
+          </Paper>
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
 
-    const logoutHandler =() => {
-setlogin(false)
-if(login === false){
-    props.history.push("/");
-}
-    }
-    
-    return (
-        <div>
-            <input type="text" placeholder="from" onChange={(event) => handleFrom(event.target.value)}/>
-            <input type="text" placeholder="to" onChange={(event) => handleTo(event.target.value)}/>
-            <button onClick={() => getdistancehandler()}>Search</button>
-            <p>Result: {distance}</p>
-            <Link to="/character">c</Link>
-            <button onClick={() => logoutHandler()}>logout</button>
-        </div>
-    )
-}
-
-export default Distance
+export default Distance;
