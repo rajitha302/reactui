@@ -1,17 +1,42 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import "./assets/styles/style.scss";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+
+import { createStore, applyMiddleware } from "redux";
+import allReducers from "./redux/reducers";
+import { Provider } from "react-redux";
+
+//import dev tools extension
+import { composeWithDevTools } from "redux-devtools-extension";
+
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "./redux/sagas/index";
+
+import { BrowserRouter } from "react-router-dom";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  allReducers,
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
