@@ -44,7 +44,7 @@ const Distance = (props) => {
       </Box>
 
       <Grid container direction='row' justify='center' alignItems='center'>
-        <Grid item xs={4}>
+        <Grid item xs={12} md={4}>
           <Paper>
             <Box p={4}>
               <Box px={4}>

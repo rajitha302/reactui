@@ -41,7 +41,7 @@ const TimezoneRange = () => {
         <Typography variant='h4'>TimeZone Finder</Typography>
       </Box>
       <Grid container direction='row' justify='center' alignItems='center'>
-        <Grid item xs={4}>
+        <Grid item xs={12} md={4}>
           <Paper m={1}>
             <Box p={4}>
               <Box>

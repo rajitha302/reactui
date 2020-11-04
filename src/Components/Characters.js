@@ -31,7 +31,7 @@ const Characters = (props) => {
       </Box>
 
       <Grid container direction='row' justify='center' alignItems='center'>
-        <Grid item xs={3}>
+        <Grid item xs={12} md={4}>
           <Paper m={1}>
             <Box p={4}>
               <Box>
