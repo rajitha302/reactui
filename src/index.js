@@ -16,6 +16,11 @@ import createSagaMiddleware from "redux-saga";
 import rootSaga from "./redux/sagas/index";
 
 import { BrowserRouter } from "react-router-dom";
+import { createMuiTheme } from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+  spacing: 8,
+});
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -29,7 +34,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <App theme={theme} />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
