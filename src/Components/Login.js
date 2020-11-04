@@ -17,6 +17,8 @@ const Login = (props) => {
   const [uname, setUname] = useState("");
   const [password, setPassword] = useState("");
   const [loginattempts, setloginAttempts] = useState(3);
+  const [unameerrormsg, setunameErrormsg] = useState(false);
+  const [passworderrormsg, setpasswordErrormsg] = useState(false);
   // const[login, setlogin] = useState(false)
   // const[uname, setUname] = useState(UserContext)
   // const[password, setPassword] = useState(UserContext)
@@ -32,12 +34,22 @@ const Login = (props) => {
     setPassword(event);
   };
 
-  const checkLoginHandler = () => {
+  const checkLoginHandler = (props) => {
     if (uname === "admin" && password === "root") {
       setlogin(true);
       console.log("Login");
     } else {
       setlogin(false);
+      if (uname !== "admin") {
+        setunameErrormsg(true);
+      }
+      if (password !== "root") {
+        setpasswordErrormsg(true);
+      }
+      if (uname !== "admin" && password !== "root") {
+        setunameErrormsg(true);
+        setpasswordErrormsg(true);
+      }
       setloginAttempts(loginattempts - 1);
       console.log("login fail");
     }
@@ -53,21 +65,25 @@ const Login = (props) => {
         style={{ minHeight: "100vh" }}
       >
         <Container maxWidth='sm'>
-          <Typography variant={"overline"}>Please Login to Continue</Typography>
+          <Typography variant={"overline"} className='login__title'>
+            Please Login to Continue
+          </Typography>
           <Card style={{ minWidth: "100%" }}>
             <CardContent>
               {loginattempts === 0 ? (
                 <div>
-                  <Box>
+                  <Box className='login__textfield'>
                     <TextField
                       id='outlined-basic'
                       label='Username'
                       variant='outlined'
                       onChange={(event) => setUnameHandler(event.target.value)}
                       disabled='true'
+                      size='medium'
+                      fullWidth={true}
                     />
                   </Box>
-                  <Box>
+                  <Box className='login__textfield'>
                     <TextField
                       id='outlined-basic'
                       label='Password'
@@ -78,19 +94,19 @@ const Login = (props) => {
                       }
                       disabled='true'
                       size='medium'
-                      fullWidth='true'
+                      fullWidth={true}
                     />
                   </Box>
-                  <Btn
-                    variant='contained'
-                    color='primary'
-                    onClick={checkLoginHandler}
-                    disabled={true}
-                    size='medium'
-                    fullWidth='true'
-                  >
-                    Login
-                  </Btn>
+                  <Box mt={2}>
+                    <Btn
+                      variant='contained'
+                      color='primary'
+                      onClick={checkLoginHandler}
+                      disabled={true}
+                    >
+                      Login
+                    </Btn>
+                  </Box>
                   <p>*Sorry, too many attempts! please try again in 48hrs.</p>
                 </div>
               ) : (
@@ -98,6 +114,8 @@ const Login = (props) => {
                   <form noValidate autoComplete='off'>
                     <Box className='login__textfield'>
                       <TextField
+                        error={unameerrormsg}
+                        helperText='Incorrect username.'
                         id='outlined-basic'
                         label='Username'
                         variant='outlined'
@@ -105,11 +123,13 @@ const Login = (props) => {
                           setUnameHandler(event.target.value)
                         }
                         size='medium'
-                        fullWidth='true'
+                        fullWidth={true}
                       />
                     </Box>
                     <Box className='login__textfield'>
                       <TextField
+                        error={passworderrormsg}
+                        helperText='Incorrect password.'
                         id='outlined-basic'
                         label='Password'
                         variant='outlined'
@@ -118,18 +138,20 @@ const Login = (props) => {
                           setPasswordHandler(event.target.value)
                         }
                         size='medium'
-                        fullWidth='true'
+                        fullWidth={true}
                       />
                     </Box>
                     {/* <input type="text" placeholder="username" onChange={(event) => setUnameHandler(event.target.value)}/>
             <input type="password" placeholder="password" onChange={(event) => setPasswordHandler(event.target.value)}/> */}
-                    <Btn
-                      variant='contained'
-                      color='primary'
-                      onClick={checkLoginHandler}
-                    >
-                      Login
-                    </Btn>
+                    <Box mt={2}>
+                      <Btn
+                        variant='contained'
+                        color='primary'
+                        onClick={checkLoginHandler}
+                      >
+                        Login
+                      </Btn>
+                    </Box>
                     {login ? props.history.push("/distance") : null}
                   </form>
                 </div>

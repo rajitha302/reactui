@@ -3,14 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { requestDistance } from "../redux/actions";
 
 // Material-UI
-import {
-  TextField,
-  Paper,
-  Grid,
-  Box,
-  Typography,
-  Divider,
-} from "@material-ui/core";
+import { TextField, Paper, Grid, Box, Typography } from "@material-ui/core";
 import Btn from "./common/Btn";
 import PersistentDrawerLeft from "./common/Nav";
 
@@ -46,35 +39,46 @@ const Distance = (props) => {
   return (
     <div>
       <PersistentDrawerLeft />
-      <Typography variant='h4'>Distance Finder</Typography>
-      <Divider />
-      <Grid container direction='row' justify='center' alignItems='center'>
-        <Grid item xs={3}>
-          <Paper m={1}>
-            <Box>
-              <TextField
-                required
-                label='From'
-                onChange={(event) => handleFrom(event.target.value)}
-              />
-            </Box>
+      <Box my={2}>
+        <Typography variant='h4'>Distance Finder</Typography>
+      </Box>
 
-            <Box>
-              <TextField
-                required
-                label='To'
-                onChange={(event) => handleTo(event.target.value)}
-              />
+      <Grid container direction='row' justify='center' alignItems='center'>
+        <Grid item xs={4}>
+          <Paper>
+            <Box p={4}>
+              <Box px={4}>
+                <TextField
+                  required
+                  label='From'
+                  fullWidth={true}
+                  margin='normal'
+                  onChange={(event) => handleFrom(event.target.value)}
+                />
+              </Box>
+
+              <Box px={4}>
+                <TextField
+                  required
+                  label='To'
+                  margin='normal'
+                  fullWidth={true}
+                  onChange={(event) => handleTo(event.target.value)}
+                />
+              </Box>
+              <Box m={4}>
+                <Btn
+                  variant='contained'
+                  color='primary'
+                  onClick={getdistancehandler}
+                >
+                  Search
+                </Btn>
+              </Box>
             </Box>
-            <Btn
-              variant='contained'
-              color='primary'
-              onClick={getdistancehandler}
-            >
-              Search
-            </Btn>
-            <Typography paragraph>Result: {distance}</Typography>
           </Paper>
+          <br />
+          <Typography variant='h4'>Result: {distance} Km</Typography>
         </Grid>
       </Grid>
     </div>

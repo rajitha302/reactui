@@ -10,7 +10,6 @@ function* getClosestCountry(action) {
 
     const closestCountry = closestCountryfunc(data, action.value.countryName);
 
-    console.log(("result:", closestCountry));
     yield put(receivedClosestCountry(closestCountry));
   } catch (error) {
     console.log(error);

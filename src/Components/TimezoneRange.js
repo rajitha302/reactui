@@ -3,14 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { requestTimezoneCountries } from "../redux/actions";
 
 // material-ui
-import {
-  TextField,
-  Paper,
-  Grid,
-  Box,
-  Typography,
-  Divider,
-} from "@material-ui/core";
+import { TextField, Paper, Grid, Box, Typography } from "@material-ui/core";
 import Btn from "./common/Btn";
 import PersistentDrawerLeft from "./common/Nav";
 
@@ -44,41 +37,55 @@ const TimezoneRange = () => {
   return (
     <div>
       <PersistentDrawerLeft />
-      <Typography variant='h4'>TimeZone Finder</Typography>
-      <Divider />
+      <Box my={2}>
+        <Typography variant='h4'>TimeZone Finder</Typography>
+      </Box>
       <Grid container direction='row' justify='center' alignItems='center'>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <Paper m={1}>
-            <Box>
-              <TextField
-                required
-                label='Ex: UTC+7:00'
-                onChange={(event) => handlefirstOnChange(event.target.value)}
-                style={{ marginRight: "20px" }}
-              />
-              <TextField
-                required
-                label='Ex: UTC+8:00'
-                onChange={(event) => handlesecondOnChange(event.target.value)}
-              />
+            <Box p={4}>
+              <Box>
+                <TextField
+                  required
+                  label='Ex: UTC+7:00'
+                  onChange={(event) => handlefirstOnChange(event.target.value)}
+                  style={{ marginRight: "20px" }}
+                  fullWidth={true}
+                />
+                <TextField
+                  required
+                  label='Ex: UTC+8:00'
+                  onChange={(event) => handlesecondOnChange(event.target.value)}
+                  fullWidth={true}
+                />
+              </Box>
+              <Box mt={4}>
+                <Btn
+                  variant='contained'
+                  color='primary'
+                  onClick={getCountryListHandler}
+                >
+                  Search
+                </Btn>
+              </Box>
             </Box>
-
-            <Btn
-              variant='contained'
-              color='primary'
-              onClick={getCountryListHandler}
-            >
-              Search
-            </Btn>
-
+          </Paper>
+          <br />
+          <Box>
             {countryRange ? (
               countryRange.map((country, index) => {
-                return <li key={index}>{country.name}</li>;
+                return (
+                  <ul>
+                    <li key={index}>
+                      <Typography variant='h4'>{country.name}</Typography>
+                    </li>
+                  </ul>
+                );
               })
             ) : (
-              <p>Please enter your inputs</p>
+              <Typography paragraph>Please enter your inputs</Typography>
             )}
-          </Paper>
+          </Box>
         </Grid>
       </Grid>
     </div>
