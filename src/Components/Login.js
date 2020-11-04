@@ -19,6 +19,9 @@ const Login = (props) => {
   const [loginattempts, setloginAttempts] = useState(3);
   const [unameerrormsg, setunameErrormsg] = useState(false);
   const [passworderrormsg, setpasswordErrormsg] = useState(false);
+  const [unamehelpertext, setunamehelpertext] = useState("");
+  const [passwordhelpertext, setpasswordhelpertext] = useState("");
+
   // const[login, setlogin] = useState(false)
   // const[uname, setUname] = useState(UserContext)
   // const[password, setPassword] = useState(UserContext)
@@ -42,13 +45,17 @@ const Login = (props) => {
       setlogin(false);
       if (uname !== "admin") {
         setunameErrormsg(true);
+        setunamehelpertext("Incorrect username.");
       }
       if (password !== "root") {
         setpasswordErrormsg(true);
+        setpasswordhelpertext("Incorrect password.");
       }
       if (uname !== "admin" && password !== "root") {
         setunameErrormsg(true);
         setpasswordErrormsg(true);
+        setunamehelpertext("Incorrect username.");
+        setpasswordhelpertext("Incorrect password.");
       }
       setloginAttempts(loginattempts - 1);
       console.log("login fail");
@@ -115,7 +122,7 @@ const Login = (props) => {
                     <Box className='login__textfield'>
                       <TextField
                         error={unameerrormsg}
-                        helperText='Incorrect username.'
+                        helperText={unamehelpertext}
                         id='outlined-basic'
                         label='Username'
                         variant='outlined'
@@ -129,7 +136,7 @@ const Login = (props) => {
                     <Box className='login__textfield'>
                       <TextField
                         error={passworderrormsg}
-                        helperText='Incorrect password.'
+                        helperText={passwordhelpertext}
                         id='outlined-basic'
                         label='Password'
                         variant='outlined'
